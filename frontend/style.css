@@ -97,7 +97,7 @@ a { color: var(--brand-600); }
   color: white;
   font-family: "Clash Display", sans-serif;
   font-weight: 700;
-  font-size: 16px;
+  font-size: 19px;
   box-shadow: var(--shadow-sm);
   overflow: hidden;
 }
@@ -113,7 +113,7 @@ a { color: var(--brand-600); }
 }
 
 .brand-mark .brand-word {
-  font-size: 22px;
+  font-size: 26px;
   font-weight: 600;
   background: var(--brand-gradient);
   -webkit-background-clip: text;
@@ -122,7 +122,7 @@ a { color: var(--brand-600); }
 }
 
 .brand-tagline {
-  font-size: 12px;
+  font-size: 14px;
   color: var(--muted);
   margin-left: 44px;
   margin-top: -4px;
@@ -131,7 +131,7 @@ a { color: var(--brand-600); }
 .btn {
   font-family: "Clash Grotesk", sans-serif;
   font-weight: 600;
-  font-size: 14px;
+  font-size: 16.5px;
   border: none;
   border-radius: 10px;
   padding: 10px 20px;
@@ -180,8 +180,8 @@ a { color: var(--brand-600); }
   text-align: center;
 }
 
-.auth-title { font-size: 26px; margin: 0 0 2px 0; }
-.auth-subtitle { color: var(--muted); font-size: 13px; margin: 0 0 22px 0; }
+.auth-title { font-size: 30.5px; margin: 0 0 2px 0; }
+.auth-subtitle { color: var(--muted); font-size: 15.5px; margin: 0 0 22px 0; }
 .auth-logo-full { max-width: 220px; width: 100%; height: auto; display: block; margin: 0 auto 18px; }
 .auth-card .logo-dot {
   width: 64px; height: 64px; border-radius: 16px;
@@ -208,7 +208,7 @@ a { color: var(--brand-600); }
   border-radius: 999px;
   font-family: "Clash Grotesk", sans-serif;
   font-weight: 600;
-  font-size: 13px;
+  font-size: 15.5px;
   color: var(--muted);
   cursor: pointer;
 }
@@ -225,7 +225,7 @@ a { color: var(--brand-600); }
   border: 1.5px solid var(--border);
   border-radius: 10px;
   padding: 10px 12px;
-  font-size: 14px;
+  font-size: 16.5px;
   font-family: "Clash Grotesk", sans-serif;
   background: var(--panel-bg);
 }
@@ -235,12 +235,12 @@ a { color: var(--brand-600); }
 
 .auth-error {
   color: var(--bad);
-  font-size: 13px;
+  font-size: 15.5px;
   min-height: 18px;
   margin-top: 4px;
 }
 
-.auth-footnote { font-size: 11px; color: var(--muted); margin-top: 18px; line-height: 1.5; }
+.auth-footnote { font-size: 13px; color: var(--muted); margin-top: 18px; line-height: 1.5; }
 
 /* ============================================================
    INTAKE / PROFILE PAGE
@@ -259,15 +259,15 @@ a { color: var(--brand-600); }
   display: flex; align-items: center; justify-content: center;
   margin: 0 auto 18px;
   font-family: "Clash Display", sans-serif;
-  font-weight: 700; font-size: 26px;
+  font-weight: 700; font-size: 30.5px;
   border: 1px solid rgba(255,255,255,0.3);
   overflow: hidden;
   padding: 8px;
 }
 .intake-hero .logo-dot img { width: 100%; height: 100%; object-fit: contain; }
 
-.intake-hero h1 { font-size: 38px; margin: 0 0 8px 0; font-weight: 600; }
-.intake-hero p { font-size: 15px; opacity: 0.85; max-width: 520px; margin: 0 auto; }
+.intake-hero h1 { font-size: 45px; margin: 0 0 8px 0; font-weight: 600; }
+.intake-hero p { font-size: 17.5px; opacity: 0.85; max-width: 520px; margin: 0 auto; }
 
 .intake-body {
   max-width: 880px;
@@ -290,13 +290,13 @@ a { color: var(--brand-600); }
 .intake-section:last-of-type { border-bottom: none; }
 
 .intake-section h2 {
-  font-size: 18px;
+  font-size: 21px;
   font-weight: 600;
   margin: 0 0 4px 0;
   color: var(--brand-800);
 }
 .intake-section .section-hint {
-  font-size: 13px;
+  font-size: 15.5px;
   color: var(--muted);
   margin: 0 0 18px 0;
 }
@@ -313,7 +313,7 @@ a { color: var(--brand-600); }
 }
 
 .field label {
-  font-size: 13px;
+  font-size: 15.5px;
   font-weight: 500;
   color: var(--muted);
   margin-bottom: 6px;
@@ -325,7 +325,7 @@ a { color: var(--brand-600); }
   border: 1.5px solid var(--border);
   border-radius: 10px;
   padding: 10px 12px;
-  font-size: 14px;
+  font-size: 16.5px;
   font-family: "Clash Grotesk", sans-serif;
   color: var(--text);
   background: var(--panel-bg);
@@ -361,7 +361,7 @@ a { color: var(--brand-600); }
   border: 1.5px solid var(--border);
   background: var(--panel-bg);
   cursor: pointer;
-  font-size: 14px;
+  font-size: 16.5px;
   transition: all 0.15s ease;
 }
 .radio-pill input { display: none; }
@@ -375,7 +375,7 @@ a { color: var(--brand-600); }
 .checkbox-field {
   display: flex; align-items: center; gap: 8px;
   grid-column: span 3;
-  font-size: 14px;
+  font-size: 16.5px;
   color: var(--text);
 }
 
@@ -385,7 +385,7 @@ a { color: var(--brand-600); }
   justify-content: flex-end;
 }
 
-.intake-footer .btn { padding: 13px 32px; font-size: 15px; }
+.intake-footer .btn { padding: 13px 32px; font-size: 17.5px; }
 
 .history-panel {
   max-width: 880px;
@@ -395,7 +395,7 @@ a { color: var(--brand-600); }
   border-radius: 14px;
   padding: 16px 20px;
 }
-.history-panel h3 { font-size: 14px; margin: 0 0 10px 0; color: var(--brand-800); }
+.history-panel h3 { font-size: 16.5px; margin: 0 0 10px 0; color: var(--brand-800); }
 .history-list { display: flex; flex-direction: column; gap: 6px; }
 .history-item {
   display: flex;
@@ -404,21 +404,22 @@ a { color: var(--brand-600); }
   padding: 8px 12px;
   background: var(--panel-bg);
   border-radius: 8px;
-  font-size: 13px;
+  font-size: 15.5px;
 }
-.history-item .btn { padding: 6px 14px; font-size: 12px; }
+.history-item .btn { padding: 6px 14px; font-size: 14px; }
 
 /* ============================================================
    DASHBOARD PAGE
    ============================================================ */
 .dashboard-wrap {
-  max-width: 1240px;
+  max-width: 1600px;
+  width: 100%;
   margin: 0 auto;
-  padding: 28px 32px 60px;
+  padding: 28px 40px 60px;
 }
 
-.page-title { font-size: 30px; font-weight: 600; margin: 0 0 4px 0; }
-.page-subtitle { color: var(--muted); font-size: 14px; margin: 0 0 24px 0; max-width: 720px; }
+.page-title { font-size: 35.5px; font-weight: 600; margin: 0 0 4px 0; }
+.page-subtitle { color: var(--muted); font-size: 16.5px; margin: 0 0 24px 0; max-width: 720px; }
 /* Home tab's model/version blurb hidden per request - kept in the DOM
    (not deleted) since app.js still writes to it via id="subtitleText";
    removing the element outright would throw on that assignment. */
@@ -450,19 +451,19 @@ a { color: var(--brand-600); }
 
 .disease-risk-value {
   font-family: "Clash Display", sans-serif;
-  font-size: 28px;
+  font-size: 33px;
   font-weight: 700;
   color: var(--brand-800);
 }
 .disease-risk-name {
-  font-size: 12.5px;
+  font-size: 15px;
   color: var(--muted);
   margin: 4px 0 10px;
   min-height: 32px;
 }
 .disease-risk-badge {
   display: inline-block;
-  font-size: 11px;
+  font-size: 13px;
   font-weight: 700;
   letter-spacing: 0.03em;
   padding: 3px 12px;
@@ -517,8 +518,8 @@ a { color: var(--brand-600); }
   min-height: 220px;
 }
 .gauge-canvas-wrap { position: relative; width: 220px; height: 132px; }
-.gauge-number { font-family: "Clash Display", sans-serif; font-size: 36px; font-weight: 700; margin-top: -56px; color: white; }
-.gauge-label { font-size: 13px; opacity: 0.85; margin-top: 4px; }
+.gauge-number { font-family: "Clash Display", sans-serif; font-size: 42.5px; font-weight: 700; margin-top: -56px; color: white; }
+.gauge-label { font-size: 15.5px; opacity: 0.85; margin-top: 4px; }
 
 .tile {
   background: var(--panel-bg);
@@ -527,9 +528,9 @@ a { color: var(--brand-600); }
   border: 1px solid var(--border);
   align-self: start;
 }
-.tile .tile-label { font-size: 12px; color: var(--muted); margin-bottom: 4px; }
-.tile .tile-value { font-size: 20px; font-weight: 600; font-family: "Clash Display", sans-serif; }
-.tile .tile-sub { font-size: 11px; color: var(--muted); margin-top: 2px; }
+.tile .tile-label { font-size: 14px; color: var(--muted); margin-bottom: 4px; }
+.tile .tile-value { font-size: 23.5px; font-weight: 600; font-family: "Clash Display", sans-serif; }
+.tile .tile-sub { font-size: 13px; color: var(--muted); margin-top: 2px; }
 
 .radar-card {
   background: white;
@@ -537,19 +538,23 @@ a { color: var(--brand-600); }
   border: 1px solid var(--border);
   padding: 16px;
 }
-.radar-card h3 { font-size: 14px; margin: 0 0 8px 6px; color: var(--brand-800); }
+.radar-card h3 { font-size: 16.5px; margin: 0 0 8px 6px; color: var(--brand-800); }
 
 /* ---------------- TABS (light purple "ribbon" band) ---------------- */
 .tabs {
+  /* Was the exact same flat colour as the page background behind it,
+     so the navbar never visually separated from the content below it -
+     the brand gradient (same one used in the logo) now gives it real
+     contrast and a clear top-of-page anchor. */
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
+  gap: 10px;
   border-bottom: none;
-  margin-bottom: 20px;
-  background: var(--brand-100);
-  border-radius: 18px;
-  padding: 14px 18px;
-  box-shadow: var(--shadow-sm);
+  margin-bottom: 24px;
+  background: var(--brand-gradient);
+  border-radius: 20px;
+  padding: 16px 20px;
+  box-shadow: var(--shadow-lg);
 }
 
 .tab-btn {
@@ -558,7 +563,7 @@ a { color: var(--brand-600); }
   border: none;
   border-radius: 999px;
   padding: 10px 20px;
-  font-size: 14px;
+  font-size: 16.5px;
   font-weight: 600;
   font-family: "Clash Grotesk", sans-serif;
   cursor: pointer;
@@ -594,7 +599,7 @@ a { color: var(--brand-600); }
   color: var(--muted);
   border-radius: 999px;
   padding: 8px 16px;
-  font-size: 13px;
+  font-size: 15.5px;
   font-weight: 600;
   font-family: "Clash Grotesk", sans-serif;
   cursor: pointer;
@@ -616,7 +621,7 @@ a { color: var(--brand-600); }
   border-left: 4px solid var(--brand-600);
   border-radius: 10px;
   padding: 14px 16px;
-  font-size: 14px;
+  font-size: 16.5px;
   margin-top: 12px;
   color: var(--brand-900);
 }
@@ -626,13 +631,13 @@ a { color: var(--brand-600); }
   border: 1px solid var(--brand-300);
   border-radius: 10px;
   padding: 14px 16px;
-  font-size: 14px;
+  font-size: 16.5px;
   margin-top: 10px;
   line-height: 1.55;
 }
 .genai-box .genai-tag {
   display: inline-block;
-  font-size: 10px;
+  font-size: 12px;
   font-weight: 700;
   letter-spacing: 0.04em;
   text-transform: uppercase;
@@ -650,13 +655,13 @@ a { color: var(--brand-600); }
 .genai-box .genai-setup-steps {
   margin: 8px 0 0 0;
   padding-left: 18px;
-  font-size: 13px;
+  font-size: 15.5px;
 }
 .genai-box code {
   background: rgba(0,0,0,0.06);
   padding: 1px 6px;
   border-radius: 4px;
-  font-size: 12.5px;
+  font-size: 15px;
 }
 
 .sim-grid {
@@ -669,7 +674,7 @@ a { color: var(--brand-600); }
   padding: 18px;
 }
 
-.sim-grid label { font-size: 13px; color: var(--muted); margin-top: 12px; display: block; }
+.sim-grid label { font-size: 15.5px; color: var(--muted); margin-top: 12px; display: block; }
 .sim-grid input[type="range"] { width: 100%; accent-color: var(--brand-600); }
 
 .outcome-grid {
@@ -683,15 +688,15 @@ a { color: var(--brand-600); }
 .outcome-grid-4 { grid-template-columns: repeat(4, 1fr); }
 @media (max-width: 980px) { .outcome-grid-4 { grid-template-columns: repeat(2, 1fr); } }
 
-.metric-delta { font-size: 12px; font-weight: 600; display: block; margin-top: 2px; }
+.metric-delta { font-size: 14px; font-weight: 600; display: block; margin-top: 2px; }
 .metric-delta.up { color: var(--bad); }
 .metric-delta.down { color: var(--good); }
 
-.narrative-list { font-size: 14px; line-height: 1.6; padding-left: 20px; color: var(--text); }
+.narrative-list { font-size: 16.5px; line-height: 1.6; padding-left: 20px; color: var(--text); }
 
-.about-box { margin-top: 30px; font-size: 13px; color: var(--muted); }
+.about-box { margin-top: 30px; font-size: 15.5px; color: var(--muted); }
 
-.hint { font-size: 12px; color: var(--muted); line-height: 1.5; }
+.hint { font-size: 14px; color: var(--muted); line-height: 1.5; }
 
 /* ============================================================
    KNOW YOURSELF TAB
@@ -704,14 +709,14 @@ a { color: var(--brand-600); }
   margin: 16px 0 24px;
 }
 .intended-use-card h3 {
-  font-size: 15px;
+  font-size: 17.5px;
   text-transform: uppercase;
   letter-spacing: 0.05em;
   color: var(--brand-300);
   margin: 0 0 12px 0;
 }
 .intended-use-card p {
-  font-size: 14px;
+  font-size: 16.5px;
   line-height: 1.6;
   margin: 0 0 12px 0;
   color: #EDE4F7;
@@ -722,7 +727,7 @@ a { color: var(--brand-600); }
   background: rgba(255,255,255,0.12);
   padding: 1px 6px;
   border-radius: 4px;
-  font-size: 12.5px;
+  font-size: 15px;
   color: white;
 }
 
@@ -739,20 +744,20 @@ a { color: var(--brand-600); }
   border-radius: 16px;
   padding: 22px 24px;
 }
-.ky-card h3 { font-size: 17px; margin: 0 0 12px 0; color: var(--brand-800); }
-.ky-card p { font-size: 14px; line-height: 1.6; color: var(--text); }
-.ky-card ul { font-size: 14px; line-height: 1.7; padding-left: 20px; margin: 8px 0 0 0; }
+.ky-card h3 { font-size: 20px; margin: 0 0 12px 0; color: var(--brand-800); }
+.ky-card p { font-size: 16.5px; line-height: 1.6; color: var(--text); }
+.ky-card ul { font-size: 16.5px; line-height: 1.7; padding-left: 20px; margin: 8px 0 0 0; }
 
 .ky-glossary dt {
   font-weight: 600;
-  font-size: 14px;
+  font-size: 16.5px;
   color: var(--brand-700);
   margin-top: 12px;
 }
 .ky-glossary dt:first-child { margin-top: 0; }
 .ky-glossary dd {
   margin: 2px 0 0 0;
-  font-size: 13.5px;
+  font-size: 16px;
   color: var(--text);
   line-height: 1.55;
 }
@@ -767,11 +772,11 @@ a { color: var(--brand-600); }
   border-radius: 10px;
   padding: 12px 14px;
 }
-.ky-tip strong { font-size: 13px; color: var(--brand-700); }
-.ky-tip p { font-size: 13px; margin: 4px 0 0 0; line-height: 1.5; }
+.ky-tip strong { font-size: 15.5px; color: var(--brand-700); }
+.ky-tip p { font-size: 15.5px; margin: 4px 0 0 0; line-height: 1.5; }
 
 .ky-ranges-card { grid-column: span 2; }
-.ky-ranges-table { width: 100%; border-collapse: collapse; font-size: 13.5px; }
+.ky-ranges-table { width: 100%; border-collapse: collapse; font-size: 16px; }
 .ky-ranges-table th {
   text-align: left; padding: 8px 12px; background: var(--panel-bg);
   color: var(--brand-800); font-weight: 600; border-bottom: 1.5px solid var(--border);
@@ -789,8 +794,8 @@ a { color: var(--brand-600); }
   background: white; border: 1px solid var(--border); border-radius: 12px;
   padding: 14px 18px;
 }
-.history-item-dash .history-date { font-weight: 600; font-size: 14px; }
-.history-item-dash .history-meta { font-size: 12px; color: var(--muted); margin-top: 2px; }
+.history-item-dash .history-date { font-weight: 600; font-size: 16.5px; }
+.history-item-dash .history-meta { font-size: 14px; color: var(--muted); margin-top: 2px; }
 
 /* ============================================================
    CONTACT US TAB
@@ -826,13 +831,13 @@ a { color: var(--brand-600); }
   color: white;
   display: flex; align-items: center; justify-content: center;
   font-family: "Clash Display", sans-serif;
-  font-weight: 700; font-size: 15px;
+  font-weight: 700; font-size: 17.5px;
   flex-shrink: 0;
 }
 
-.contact-name { font-weight: 600; font-size: 15px; }
-.contact-role { font-size: 12px; color: var(--muted); margin-bottom: 2px; }
-.contact-link { font-size: 13px; }
+.contact-name { font-weight: 600; font-size: 17.5px; }
+.contact-role { font-size: 14px; color: var(--muted); margin-bottom: 2px; }
+.contact-link { font-size: 15.5px; }
 
 .chat-panel {
   background: white;
@@ -844,7 +849,7 @@ a { color: var(--brand-600); }
   gap: 10px;
 }
 
-.chat-header { font-weight: 600; font-size: 15px; color: var(--brand-800); }
+.chat-header { font-weight: 600; font-size: 17.5px; color: var(--brand-800); }
 
 .chat-messages {
   min-height: 140px;
@@ -862,7 +867,7 @@ a { color: var(--brand-600); }
   max-width: 85%;
   padding: 8px 12px;
   border-radius: 12px;
-  font-size: 13.5px;
+  font-size: 16px;
   line-height: 1.5;
 }
 .chat-bubble-system {
@@ -893,7 +898,7 @@ a { color: var(--brand-600); }
   border: 1.5px solid var(--border);
   border-radius: 10px;
   padding: 9px 12px;
-  font-size: 13.5px;
+  font-size: 16px;
   font-family: "Clash Grotesk", sans-serif;
   background: var(--panel-bg);
   resize: vertical;
@@ -914,6 +919,32 @@ a { color: var(--brand-600); }
 }
 
 /* ============================================================
+   PHONE-WIDTH BREAKPOINT (375-600px) - the 980px rule above
+   handles tablets reasonably, but a real phone needs its own pass:
+   single-column everywhere, reduced padding so content isn't
+   squeezed against the screen edges, and the 8-button navbar
+   wrapping into a usable, tappable grid instead of a cramped row.
+   ============================================================ */
+@media (max-width: 600px) {
+  .dashboard-wrap { padding: 16px 14px 40px; }
+  .page-title { font-size: 26px; }
+  .intake-hero h1 { font-size: 30px; }
+
+  .tabs { padding: 10px 10px; gap: 6px; border-radius: 16px; }
+  .tab-btn { padding: 9px 14px; font-size: 13px; flex: 1 1 auto; text-align: center; }
+
+  .disease-risk-row { grid-template-columns: 1fr; gap: 10px; }
+  .snapshot-right { grid-template-columns: 1fr; }
+  .outcome-grid-4 { grid-template-columns: 1fr; }
+  .field-grid { grid-template-columns: 1fr; }
+  .field.slider-field, .checkbox-field { grid-column: span 1; }
+  .disease-selector { gap: 6px; }
+  .disease-pill { padding: 7px 12px; font-size: 12px; }
+
+  .content-area { padding: 6px 2px 20px; }
+}
+
+/* ============================================================
    PRINT SUMMARY - hidden on screen by default; CSS below flips
    this when the browser's print dialog (or save-as-PDF) is used.
    ============================================================ */
@@ -928,16 +959,16 @@ a { color: var(--brand-600); }
     font-family: Georgia, serif;
     padding: 20px;
   }
-  .print-summary h1 { font-size: 22px; margin-bottom: 4px; }
-  .print-date { color: #555; font-size: 13px; margin-bottom: 20px; }
+  .print-summary h1 { font-size: 26px; margin-bottom: 4px; }
+  .print-date { color: #555; font-size: 15.5px; margin-bottom: 20px; }
   .print-intended-use {
     border: 1.5px solid #000;
     padding: 14px 18px;
-    font-size: 12.5px;
+    font-size: 15px;
     line-height: 1.5;
     margin-bottom: 24px;
   }
-  .print-risk-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  .print-risk-table { width: 100%; border-collapse: collapse; font-size: 15.5px; }
   .print-risk-table th, .print-risk-table td {
     border: 1px solid #999;
     padding: 8px 10px;
@@ -945,5 +976,5 @@ a { color: var(--brand-600); }
     vertical-align: top;
   }
   .print-risk-table th { background: #eee; }
-  .print-footer { font-size: 11px; color: #777; margin-top: 24px; }
+  .print-footer { font-size: 13px; color: #777; margin-top: 24px; }
 }
