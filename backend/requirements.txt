@@ -1,11 +1,11 @@
 fastapi
 uvicorn[standard]
 pydantic
-pandas
 pyarrow
-numpy
-xgboost
-shap
-scikit-learn
 google-genai
 python-dotenv
+scikit-learn==1.8.0
+xgboost==3.2.0
+shap==0.52.0
+numpy==2.4.2
+pandas==2.3.3
