@@ -74,25 +74,22 @@ _metrics = None
 
 def _load():
     global _xgb_model, _hgb_model, _lr_model, _lr_scaler, _meta_model, _explainer, _medians, _metrics
-    if _xgb_model is None:
-        with open(MODEL_DIR / "risk_model.pkl", "rb") as f:
-            _xgb_model = pickle.load(f)
-        with open(MODEL_DIR / "hgb_model.pkl", "rb") as f:
-            _hgb_model = pickle.load(f)
-        with open(MODEL_DIR / "lr_model.pkl", "rb") as f:
-            _lr_model = pickle.load(f)
-        with open(MODEL_DIR / "lr_scaler.pkl", "rb") as f:
-            _lr_scaler = pickle.load(f)
-        with open(MODEL_DIR / "meta_model.pkl", "rb") as f:
-            _meta_model = pickle.load(f)
-        with open(MODEL_DIR / "explainer.pkl", "rb") as f:
-            _explainer = pickle.load(f)
-        with open(MODEL_DIR / "medians.pkl", "rb") as f:
-            _medians = pickle.load(f)
+    if _medians is None or _xgb_model is None:
+        def _pkl(name):
+            with open(MODEL_DIR / name, "rb") as f:
+                return pickle.load(f)
+        _xgb_model = _pkl("risk_model.pkl")
+        _hgb_model = _pkl("hgb_model.pkl")
+        _lr_model = _pkl("lr_model.pkl")
+        _lr_scaler = _pkl("lr_scaler.pkl")
+        _meta_model = _pkl("meta_model.pkl")
+        _explainer = _pkl("explainer.pkl")
+        _medians = _pkl("medians.pkl")
         with open(MODEL_DIR / "metrics.json") as f:
             _metrics = json.load(f)
+        if _medians is None:
+            raise RuntimeError(f"medians.pkl loaded as None from {MODEL_DIR / 'medians.pkl'}")
     return _xgb_model, _hgb_model, _lr_model, _lr_scaler, _meta_model, _explainer, _medians, _metrics
-
 
 def _row(feature_dict: dict, medians) -> pd.DataFrame:
     return pd.DataFrame([{f: feature_dict.get(f, medians[f]) for f in FEATURES}])
