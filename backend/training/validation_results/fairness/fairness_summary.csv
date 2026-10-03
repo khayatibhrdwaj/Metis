@@ -1,0 +1,6 @@
+Disease,Overall AUC,Max subgroup gap
+Type 2 Diabetes,0.859,0.088
+Metabolic Syndrome,0.86,0.028
+NAFLD (Fatty Liver),0.831,0.029
+Chronic Kidney Disease,0.854,0.114
+Hypertension,0.787,0.111

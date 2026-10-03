@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Metis — Patient Profile</title>
+<link rel="icon" href="assets/logo-icon.png">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="intake-hero">
+  <div class="logo-dot"><img src="assets/logo-icon.png" alt="Metis logo"></div>
+  <h1>Metis</h1>
+  <p>Explainable metabolic digital twin. Enter your current metabolic snapshot to build your personalized risk profile and simulator.</p>
+</div>
+
+<div class="intake-body">
+  <div class="history-panel hidden" id="historyPanel">
+    <h3>Your past submissions</h3>
+    <div class="history-list" id="historyList"></div>
+  </div>
+
+  <form class="intake-card" id="intakeForm">
+
+    <div class="intake-section">
+      <h2>Body</h2>
+      <p class="section-hint">Basic measurements</p>
+      <div class="field-grid">
+        <div class="field slider-field">
+          <label>Age</label>
+          <div class="slider-row">
+            <input type="range" id="age" min="18" max="90" value="45">
+            <span class="slider-val" id="ageVal">45</span>
+          </div>
+        </div>
+        <div class="field" style="grid-column: span 3;">
+          <label>Gender</label>
+          <div class="radio-pill-row">
+            <label class="radio-pill selected" data-for="gender-female">
+              <input type="radio" name="gender" id="gender-female" value="Female" checked> Female
+            </label>
+            <label class="radio-pill" data-for="gender-male">
+              <input type="radio" name="gender" id="gender-male" value="Male"> Male
+            </label>
+          </div>
+        </div>
+        <div class="field">
+          <label>Weight (kg)</label>
+          <input type="number" id="weight_kg" placeholder="e.g. 70" required step="0.5" min="20" max="300">
+        </div>
+        <div class="field">
+          <label>Height (cm)</label>
+          <input type="number" id="height_cm" placeholder="e.g. 170" required step="0.5" min="100" max="250">
+        </div>
+        <div class="field">
+          <label>Waist circumference (cm)</label>
+          <input type="number" id="waist_cm" placeholder="e.g. 90" required step="0.5" min="40" max="200">
+        </div>
+      </div>
+    </div>
+
+    <div class="intake-section">
+      <h2>Blood pressure &amp; labs</h2>
+      <p class="section-hint">From a recent checkup, if available</p>
+      <div class="field-grid">
+        <div class="field">
+          <label>Systolic BP</label>
+          <input type="number" id="bp_systolic" placeholder="e.g. 120" required min="60" max="250">
+        </div>
+        <div class="field">
+          <label>Diastolic BP</label>
+          <input type="number" id="bp_diastolic" placeholder="e.g. 80" required min="30" max="150">
+        </div>
+        <div class="field">
+          <label>HDL (mg/dL)</label>
+          <input type="number" id="hdl" placeholder="e.g. 50" required step="1" min="10" max="150">
+        </div>
+        <div class="field">
+          <label>Total cholesterol (mg/dL)</label>
+          <input type="number" id="total_cholesterol" placeholder="e.g. 180" required min="50" max="500">
+        </div>
+        <div class="field">
+          <label>LDL (mg/dL, optional/fasting)</label>
+          <input type="number" id="ldl" placeholder="e.g. 100" required step="1" min="10" max="400">
+        </div>
+        <div class="field">
+          <label>Triglycerides (mg/dL, optional/fasting)</label>
+          <input type="number" id="triglycerides" placeholder="e.g. 120" required step="5" min="10" max="2000">
+        </div>
+        <div class="field">
+          <label>Fasting insulin (uU/mL, optional)</label>
+          <input type="number" id="insulin" placeholder="e.g. 10" required step="0.5" min="0" max="300">
+        </div>
+        <div class="field">
+          <label>Fasting glucose (mg/dL, optional)</label>
+          <input type="number" id="fasting_glucose" placeholder="e.g. 95" step="1" min="40" max="600">
+        </div>
+        <div class="field">
+          <label>HbA1c (%, optional)</label>
+          <input type="number" id="hba1c" placeholder="e.g. 5.5" step="0.1" min="3" max="20">
+        </div>
+        <div class="field">
+          <label>Uric acid (mg/dL, optional)</label>
+          <input type="number" id="uric_acid" placeholder="e.g. 5.0" step="0.1" min="1" max="20">
+        </div>
+        <div class="field">
+          <label>Albumin (g/dL, optional)</label>
+          <input type="number" id="albumin" placeholder="e.g. 4.2" step="0.1" min="1" max="6">
+        </div>
+        <div class="field">
+          <label>White blood cell count (1000 cells/µL, optional)</label>
+          <input type="number" id="wbc" placeholder="e.g. 6.5" step="0.1" min="1" max="50">
+        </div>
+        <div class="field">
+          <label>Creatinine (mg/dL, optional)</label>
+          <input type="number" id="creatinine" placeholder="e.g. 0.9" step="0.01" min="0.1" max="20">
+        </div>
+        <div class="field">
+          <label>BUN (mg/dL, optional)</label>
+          <input type="number" id="bun" placeholder="e.g. 14" step="1" min="1" max="150">
+        </div>
+      </div>
+    </div>
+
+    <div class="intake-section">
+      <h2>Inflammation &amp; liver</h2>
+      <p class="section-hint">Optional — leave defaults if unknown</p>
+      <div class="field-grid">
+        <div class="field">
+          <label>CRP (mg/L)</label>
+          <input type="number" id="crp" placeholder="e.g. 1.5" required step="0.1" min="0" max="50">
+        </div>
+        <div class="field">
+          <label>Liver fat — CAP score (dB/m)</label>
+          <input type="number" id="liver_fat_cap" placeholder="e.g. 230" required step="5" min="100" max="400">
+        </div>
+        <div class="field">
+          <label>Liver stiffness (kPa)</label>
+          <input type="number" id="liver_stiffness" placeholder="e.g. 5.0" required step="0.1" min="1" max="75">
+        </div>
+        <div class="field">
+          <label>ALT (U/L, optional)</label>
+          <input type="number" id="alt" placeholder="e.g. 20" step="1" min="1" max="500">
+        </div>
+        <div class="field">
+          <label>AST (U/L, optional)</label>
+          <input type="number" id="ast" placeholder="e.g. 20" step="1" min="1" max="500">
+        </div>
+        <div class="field">
+          <label>GGT (U/L, optional)</label>
+          <input type="number" id="ggt" placeholder="e.g. 25" step="1" min="1" max="500">
+        </div>
+      </div>
+    </div>
+
+    <div class="intake-section">
+      <h2>Lifestyle</h2>
+      <p class="section-hint">Your typical week</p>
+      <div class="field-grid">
+        <div class="field slider-field">
+          <label>Sleep (hrs/night)</label>
+          <div class="slider-row">
+            <input type="range" id="sleep_hours" min="3" max="10" step="0.5" value="5.8">
+            <span class="slider-val" id="sleep_hoursVal">5.8</span>
+          </div>
+        </div>
+        <div class="field slider-field">
+          <label>Exercise (min/week)</label>
+          <div class="slider-row">
+            <input type="range" id="activity_min_per_week" min="0" max="600" step="10" value="60">
+            <span class="slider-val" id="activity_min_per_weekVal">60</span>
+          </div>
+        </div>
+        <div class="field slider-field">
+          <label>Sedentary time (min/day)</label>
+          <div class="slider-row">
+            <input type="range" id="sedentary_min_per_day" min="0" max="900" step="30" value="480">
+            <span class="slider-val" id="sedentary_min_per_dayVal">480</span>
+          </div>
+        </div>
+        <div class="field slider-field">
+          <label>Alcohol (drinks/day, avg)</label>
+          <div class="slider-row">
+            <input type="range" id="drinks_per_day" min="0" max="10" step="0.5" value="1">
+            <span class="slider-val" id="drinks_per_dayVal">1</span>
+          </div>
+        </div>
+        <div class="field slider-field">
+          <label>Added sugar intake (g/day)</label>
+          <div class="slider-row">
+            <input type="range" id="sugar_g" min="0" max="300" step="5" value="95">
+            <span class="slider-val" id="sugar_gVal">95</span>
+          </div>
+        </div>
+        <div class="field slider-field">
+          <label>Fiber intake (g/day)</label>
+          <div class="slider-row">
+            <input type="range" id="fiber_g" min="0" max="60" step="1" value="15">
+            <span class="slider-val" id="fiber_gVal">15</span>
+          </div>
+        </div>
+        <div class="checkbox-field">
+          <input type="checkbox" id="smoker_current"> <label for="smoker_current" style="margin:0;">Currently smokes</label>
+        </div>
+      </div>
+    </div>
+
+    <div class="intake-section">
+      <h2>Work &amp; stress</h2>
+      <p class="section-hint">A standard screening scale, not a diagnosis</p>
+      <div class="field-grid">
+        <div class="field">
+          <label>Type of work</label>
+          <select id="occ_activity_level">
+            <option value="1">Mostly sitting (desk job)</option>
+            <option value="2">Mostly standing/walking</option>
+            <option value="3">Light lifting/moving</option>
+            <option value="4">Heavy lifting/manual labor</option>
+          </select>
+        </div>
+        <div class="field slider-field">
+          <label>Stress/mood screening score (PHQ-9, 0–27)</label>
+          <div class="slider-row">
+            <input type="range" id="phq9_score" min="0" max="27" step="1" value="4">
+            <span class="slider-val" id="phq9_scoreVal">4</span>
+          </div>
+        </div>
+        <div class="field slider-field">
+          <label>Income-to-poverty ratio</label>
+          <div class="slider-row">
+            <input type="range" id="poverty_ratio" min="0" max="5" step="0.1" value="2.0">
+            <span class="slider-val" id="poverty_ratioVal">2.0</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="intake-footer">
+      <button type="submit" class="btn btn-primary">Continue to Dashboard →</button>
+    </div>
+  </form>
+</div>
+
+<script src="intake.js"></script>
+</body>
+</html>

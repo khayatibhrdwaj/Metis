@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Metis</title>
+<script>
+  // Route based on account/profile state.
+  const hasAccount = !!localStorage.getItem("metisUserEmail");
+  const hasProfile = !!localStorage.getItem("metisPatientProfile");
+  let target = "auth.html";
+  if (hasAccount && hasProfile) target = "dashboard.html";
+  else if (hasAccount) target = "intake.html";
+  window.location.replace(target);
+</script>
+</head>
+<body></body>
+</html>

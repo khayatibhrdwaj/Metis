@@ -1,0 +1,66 @@
+# ---------------------------------------------------------------
+# Secrets - never commit these
+# ---------------------------------------------------------------
+.env
+backend/.env
+*.env
+!.env.example
+!backend/.env.example
+
+# ---------------------------------------------------------------
+# Python
+# ---------------------------------------------------------------
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+.venv/
+venv/
+env/
+ENV/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# ---------------------------------------------------------------
+# Databases / runtime data (created automatically, not source)
+# ---------------------------------------------------------------
+backend/metis_users.db
+backend/*.db
+backend/*.db-journal
+backend/*.sqlite
+backend/*.sqlite3
+
+# ---------------------------------------------------------------
+# Large raw data (real NHANES .xpt files) - keep the processed CSV,
+# exclude the big raw source files from version control; regenerate
+# via backend/training/data_prep_2021_2023.py if you need to retrain.
+# ---------------------------------------------------------------
+backend/training/data/raw_2021_2023/*.xpt
+
+# ---------------------------------------------------------------
+# Trained model artifacts are checked in deliberately (the app needs
+# them to run without retraining) - do NOT ignore backend/models/.
+# Ignore only stray retraining scratch files here instead.
+# ---------------------------------------------------------------
+
+# ---------------------------------------------------------------
+# Validation/analysis outputs (regenerate via validate_models.py)
+# ---------------------------------------------------------------
+backend/training/validation_results/*.png
+backend/training/validation_results/*.csv
+!backend/training/validation_results/.gitkeep
+
+# ---------------------------------------------------------------
+# OS / editor cruft
+# ---------------------------------------------------------------
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.swp
+
+# ---------------------------------------------------------------
+# Logs
+# ---------------------------------------------------------------
+*.log

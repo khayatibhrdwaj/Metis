@@ -1,0 +1,10 @@
+Subgroup,n,n_positive,ROC-AUC
+Overall,1137,620,0.787
+Sex: Female,598,302,0.801
+Sex: Male,539,318,0.764
+Age band: 18-39,324,79,0.775
+Age band: 40-59,309,177,0.683
+Age band: 60+,504,364,0.676
+Income band: Higher income (3x+),487,255,0.763
+Income band: Low income (<1.3x poverty line),202,111,0.83
+Income band: Middle income (1.3-3x),313,186,0.761

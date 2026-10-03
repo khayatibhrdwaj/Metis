@@ -1,0 +1,3 @@
+Model,AUC,n_test
+Adapted FINDRISC (6 of 8 components available in this dataset),0.751,1137
+"Metis (Type 2 Diabetes, production stacked ensemble)",0.859,1137

@@ -1,0 +1,11 @@
+fastapi
+uvicorn[standard]
+pydantic
+pandas
+pyarrow
+numpy
+xgboost
+shap
+scikit-learn
+google-genai
+python-dotenv

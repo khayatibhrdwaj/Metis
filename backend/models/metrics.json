@@ -1,0 +1,91 @@
+{
+  "roc_auc": 0.8710412355980688,
+  "pr_auc": 0.5809379703711491,
+  "solo_xgb_roc_auc": 0.865303076557783,
+  "n_train": 4546,
+  "n_test": 1137,
+  "features": [
+    "age",
+    "bmi",
+    "waist_cm",
+    "waist_height_ratio",
+    "bp_systolic",
+    "bp_diastolic",
+    "pulse_pressure",
+    "hdl",
+    "total_cholesterol",
+    "ldl",
+    "triglycerides",
+    "crp",
+    "insulin",
+    "homa_ir",
+    "liver_fat_cap",
+    "liver_stiffness",
+    "smoker_current",
+    "sleep_hours",
+    "activity_min_per_week",
+    "sedentary_min_per_day",
+    "kcal",
+    "fiber_g",
+    "occ_activity_level",
+    "phq9_score",
+    "poverty_ratio",
+    "gender_male",
+    "alt",
+    "ast",
+    "ggt",
+    "uric_acid",
+    "albumin",
+    "wbc"
+  ],
+  "native_missing_ok": [
+    "albumin",
+    "alt",
+    "ast",
+    "ggt",
+    "homa_ir",
+    "insulin",
+    "ldl",
+    "liver_fat_cap",
+    "liver_stiffness",
+    "occ_activity_level",
+    "phq9_score",
+    "triglycerides",
+    "uric_acid",
+    "wbc"
+  ],
+  "classification_report": {
+    "0": {
+      "precision": 0.8874878758486906,
+      "recall": 0.9621451104100947,
+      "f1-score": 0.9233097880928355,
+      "support": 951.0
+    },
+    "1": {
+      "precision": 0.660377358490566,
+      "recall": 0.3763440860215054,
+      "f1-score": 0.4794520547945205,
+      "support": 186.0
+    },
+    "accuracy": 0.8663148636763413,
+    "macro avg": {
+      "precision": 0.7739326171696284,
+      "recall": 0.6692445982158,
+      "f1-score": 0.701380921443678,
+      "support": 1137.0
+    },
+    "weighted avg": {
+      "precision": 0.8503352318481531,
+      "recall": 0.8663148636763413,
+      "f1-score": 0.8506998158910003,
+      "support": 1137.0
+    }
+  },
+  "data_cycle": "NHANES August 2021-August 2023",
+  "architecture": "stacked ensemble (XGBoost + HistGradientBoosting + Logistic Regression, combined by an out-of-fold-trained meta-learner). SHAP explanations use only the XGBoost component - see train_model.py docstring.",
+  "meta_learner_weights": {
+    "xgb": 3.2310850443834083,
+    "hgb": -0.3921247509090209,
+    "lr": 2.19802672842944
+  }
+}

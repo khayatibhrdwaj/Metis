@@ -1,0 +1,71 @@
+{
+  "n_test": 1139,
+  "test_prevalence": 0.15188762071992976,
+  "best_roc_auc_model": "HistGradientBoosting",
+  "best_roc_auc": 0.8863737000203449,
+  "metrics": {
+    "Logistic Regression": {
+      "ROC-AUC": 0.8687,
+      "PR-AUC": 0.5539,
+      "Accuracy": 0.7849,
+      "Precision": 0.3966,
+      "Recall": 0.7977,
+      "F1": 0.5298,
+      "Brier Score (lower=better)": 0.1501
+    },
+    "Random Forest": {
+      "ROC-AUC": 0.8627,
+      "PR-AUC": 0.5049,
+      "Accuracy": 0.8306,
+      "Precision": 0.4573,
+      "Recall": 0.6185,
+      "F1": 0.5258,
+      "Brier Score (lower=better)": 0.1184
+    },
+    "Gradient Boosting": {
+      "ROC-AUC": 0.8758,
+      "PR-AUC": 0.6032,
+      "Accuracy": 0.8112,
+      "Precision": 0.4314,
+      "Recall": 0.763,
+      "F1": 0.5511,
+      "Brier Score (lower=better)": 0.1272
+    },
+    "HistGradientBoosting": {
+      "ROC-AUC": 0.8864,
+      "PR-AUC": 0.6415,
+      "Accuracy": 0.842,
+      "Precision": 0.4858,
+      "Recall": 0.6936,
+      "F1": 0.5714,
+      "Brier Score (lower=better)": 0.1065
+    },
+    "HistGB (monotonic)": {
+      "ROC-AUC": 0.8561,
+      "PR-AUC": 0.5164,
+      "Accuracy": 0.8051,
+      "Precision": 0.4186,
+      "Recall": 0.7283,
+      "F1": 0.5316,
+      "Brier Score (lower=better)": 0.135
+    },
+    "SVM": {
+      "ROC-AUC": 0.8548,
+      "PR-AUC": 0.5134,
+      "Accuracy": 0.856,
+      "Precision": 0.5672,
+      "Recall": 0.2197,
+      "F1": 0.3167,
+      "Brier Score (lower=better)": 0.098
+    },
+    "XGBoost (production)": {
+      "ROC-AUC": 0.8703,
+      "PR-AUC": 0.5362,
+      "Accuracy": 0.8086,
+      "Precision": 0.429,
+      "Recall": 0.7861,
+      "F1": 0.5551,
+      "Brier Score (lower=better)": 0.1373
+    }
+  }
+}

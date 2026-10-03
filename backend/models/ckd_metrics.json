@@ -1,0 +1,68 @@
+{
+  "roc_auc": 0.8446429273277524,
+  "pr_auc": 0.4529648042174472,
+  "n_train": 4508,
+  "n_test": 1127,
+  "prevalence": 0.08766637089618456,
+  "features": [
+    "age",
+    "bmi",
+    "waist_cm",
+    "waist_height_ratio",
+    "bp_systolic",
+    "bp_diastolic",
+    "pulse_pressure",
+    "hdl",
+    "total_cholesterol",
+    "ldl",
+    "triglycerides",
+    "crp",
+    "insulin",
+    "homa_ir",
+    "liver_fat_cap",
+    "liver_stiffness",
+    "smoker_current",
+    "sleep_hours",
+    "activity_min_per_week",
+    "sedentary_min_per_day",
+    "kcal",
+    "fiber_g",
+    "occ_activity_level",
+    "phq9_score",
+    "poverty_ratio",
+    "gender_male",
+    "alt",
+    "ast",
+    "ggt",
+    "uric_acid",
+    "albumin",
+    "wbc"
+  ],
+  "classification_report": {
+    "0": {
+      "precision": 0.9721900347624566,
+      "recall": 0.816147859922179,
+      "f1-score": 0.8873611845584347,
+      "support": 1028.0
+    },
+    "1": {
+      "precision": 0.2840909090909091,
+      "recall": 0.7575757575757576,
+      "f1-score": 0.4132231404958678,
+      "support": 99.0
+    },
+    "accuracy": 0.8110026619343389,
+    "macro avg": {
+      "precision": 0.6281404719266829,
+      "recall": 0.7868618087489683,
+      "f1-score": 0.6502921625271513,
+      "support": 1127.0
+    },
+    "weighted avg": {
+      "precision": 0.9117447699519126,
+      "recall": 0.8110026619343389,
+      "f1-score": 0.8457110813089279,
+      "support": 1127.0
+    }
+  }
+}

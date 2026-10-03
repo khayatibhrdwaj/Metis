@@ -1,0 +1,6 @@
+Disease,Brier (raw),Brier (calibrated),ECE (raw),ECE (calibrated),Calibration improves Brier?
+Type 2 Diabetes,0.1086,0.112,0.0474,0.0511,False
+Metabolic Syndrome,0.1549,0.123,0.1438,0.0444,True
+NAFLD (Fatty Liver),0.1754,0.1764,0.0688,0.0609,False
+Chronic Kidney Disease,0.1273,0.0642,0.1903,0.0204,True
+Hypertension,0.1723,0.1742,0.0443,0.0397,False

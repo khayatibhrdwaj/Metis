@@ -1,0 +1,6 @@
+Disease,Mean AUC (5-fold CV),Std AUC,Min AUC,Max AUC
+Type 2 Diabetes,0.86,0.01,0.85,0.878
+Metabolic Syndrome,0.849,0.004,0.844,0.854
+NAFLD (Fatty Liver),0.842,0.005,0.837,0.851
+Chronic Kidney Disease,0.839,0.021,0.811,0.869
+Hypertension,0.787,0.015,0.768,0.8

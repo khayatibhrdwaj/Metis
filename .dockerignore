@@ -1,0 +1,9 @@
+.git
+.gitignore
+README.md
+backend/.env
+backend/metis_users.db
+backend/training/data/raw_2021_2023
+backend/training/validation_results
+**/__pycache__
+**/*.pyc

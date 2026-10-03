@@ -1,0 +1,6 @@
+Disease,n_test_total,n_test_with_weight,Unweighted prevalence,Weighted prevalence,Unweighted AUC,Weighted AUC
+Type 2 Diabetes,1137,659,0.164,0.141,0.862,0.88
+Metabolic Syndrome,1057,633,0.208,0.293,0.853,0.823
+NAFLD (Fatty Liver),1075,592,0.545,0.519,0.831,0.862
+Chronic Kidney Disease,1127,648,0.088,0.052,0.845,0.904
+Hypertension,1137,622,0.545,0.476,0.787,0.774

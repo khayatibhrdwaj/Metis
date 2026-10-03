@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Metis — Dashboard</title>
+<link rel="icon" href="assets/logo-icon.png">
+<link rel="stylesheet" href="style.css">
+<script src="vendor/chart.umd.js"></script>
+</head>
+<body class="dashboard-body">
+
+<div class="brand-bar">
+  <img src="assets/logo-full.png" alt="Metis — Imagination for a better life" class="brand-logo-full">
+  <div class="brand-actions">
+    <a href="intake.html" class="btn btn-ghost">Edit Profile</a>
+    <button id="logoutBtn" class="btn btn-danger">Log Out</button>
+  </div>
+</div>
+
+<div class="dashboard-wrap">
+
+  <div class="tabs">
+    <button class="tab-btn active" data-tab="home">Home</button>
+    <button class="tab-btn" data-tab="drivers">Risk &amp; Drivers</button>
+    <button class="tab-btn" data-tab="aiexplain">AI Explanation</button>
+    <button class="tab-btn" data-tab="simulator">Simulator</button>
+    <button class="tab-btn" data-tab="trajectory">Trajectory</button>
+    <button class="tab-btn" data-tab="knowyourself">Know Yourself</button>
+    <button class="tab-btn" data-tab="history">History</button>
+    <button class="tab-btn" data-tab="contact">Contact Us</button>
+  </div>
+
+  <div class="content-area">
+
+  <!-- ============ TAB: HOME ============ -->
+  <section class="tab-panel" id="tab-home">
+    <h1 class="page-title">Your metabolic health</h1>
+    <p class="page-subtitle" id="subtitleText">A clinical decision-support tool — not a diagnostic device. Trained and internally validated on real NHANES data; see the Know Yourself tab's Intended Use statement before relying on any result.</p>
+
+    <div class="disease-risk-row" id="diseaseRiskRow">
+      <div class="disease-risk-card" data-disease="diabetes">
+        <div class="disease-risk-value" id="risk_diabetes">--%</div>
+        <div class="disease-risk-name">Type 2 Diabetes</div>
+        <div class="disease-risk-badge" id="badge_diabetes">--</div>
+      </div>
+      <div class="disease-risk-card" data-disease="metabolic_syndrome">
+        <div class="disease-risk-value" id="risk_metabolic_syndrome">--%</div>
+        <div class="disease-risk-name">Metabolic Syndrome</div>
+        <div class="disease-risk-badge" id="badge_metabolic_syndrome">--</div>
+      </div>
+      <div class="disease-risk-card" data-disease="nafld">
+        <div class="disease-risk-value" id="risk_nafld">--%</div>
+        <div class="disease-risk-name">Fatty Liver (NAFLD)</div>
+        <div class="disease-risk-badge" id="badge_nafld">--</div>
+      </div>
+      <div class="disease-risk-card" data-disease="ckd">
+        <div class="disease-risk-value" id="risk_ckd">--%</div>
+        <div class="disease-risk-name">Chronic Kidney Disease</div>
+        <div class="disease-risk-badge" id="badge_ckd">--</div>
+      </div>
+      <div class="disease-risk-card" data-disease="hypertension">
+        <div class="disease-risk-value" id="risk_hypertension">--%</div>
+        <div class="disease-risk-name">Hypertension</div>
+        <div class="disease-risk-badge" id="badge_hypertension">--</div>
+      </div>
+    </div>
+    <p class="hint" style="margin: -8px 0 12px;">Click any card above to see its drivers on the Risk &amp; Drivers tab. Color bands (green/amber/red) reflect this model's predicted-risk output, not clinical diagnostic cutoffs.</p>
+    <button class="btn btn-ghost" id="printSummaryBtn" style="margin-bottom: 20px;">🖨️ Print / save summary for your doctor</button>
+
+    <h2 class="page-title" style="font-size: 20px; margin-top: 8px;">Diabetes deep-dive</h2>
+    <div class="snapshot-layout">
+      <div class="snapshot-left">
+        <div class="gauge-card">
+          <div class="gauge-canvas-wrap"><canvas id="gaugeChart"></canvas></div>
+          <div class="gauge-number" id="gaugeNumber">--%</div>
+          <div class="gauge-label">Predicted Diabetes Risk</div>
+        </div>
+        <div class="radar-card">
+          <h3>Key markers vs. healthy reference range</h3>
+          <canvas id="radarChart" height="220"></canvas>
+        </div>
+      </div>
+
+      <div class="snapshot-right">
+        <div class="tile"><div class="tile-label">BMI</div><div class="tile-value" id="t_bmi">--</div></div>
+        <div class="tile"><div class="tile-label">Waist circumference</div><div class="tile-value" id="t_waist">--</div><div class="tile-sub">cm</div></div>
+        <div class="tile"><div class="tile-label">Blood pressure</div><div class="tile-value" id="t_bp">--</div></div>
+        <div class="tile"><div class="tile-label">HDL / Triglycerides</div><div class="tile-value" id="t_lipids">--</div><div class="tile-sub">mg/dL</div></div>
+        <div class="tile"><div class="tile-label">Fasting glucose</div><div class="tile-value" id="t_glucose">--</div><div class="tile-sub">mg/dL</div></div>
+        <div class="tile"><div class="tile-label">HbA1c</div><div class="tile-value" id="t_hba1c">--</div><div class="tile-sub">%</div></div>
+        <div class="tile"><div class="tile-label">CRP (inflammation)</div><div class="tile-value" id="t_crp">--</div><div class="tile-sub">mg/L</div></div>
+        <div class="tile"><div class="tile-label">Liver fat (CAP)</div><div class="tile-value" id="t_liver">--</div><div class="tile-sub">dB/m</div></div>
+        <div class="tile"><div class="tile-label">Sleep</div><div class="tile-value" id="t_sleep">--</div><div class="tile-sub">hrs/night</div></div>
+        <div class="tile"><div class="tile-label">Activity</div><div class="tile-value" id="t_activity">--</div><div class="tile-sub">min/week</div></div>
+        <div class="tile"><div class="tile-label">Stress/mood score</div><div class="tile-value" id="t_stress">--</div><div class="tile-sub">PHQ-9, 0–27</div></div>
+        <div class="tile"><div class="tile-label">Smoking status</div><div class="tile-value" id="t_smoke">--</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ TAB: RISK & DRIVERS ============ -->
+  <section class="tab-panel hidden" id="tab-drivers">
+    <h2>What's driving this risk score?</h2>
+    <div class="disease-selector" id="diseaseSelector">
+      <button class="disease-pill active" data-disease="diabetes">Type 2 Diabetes</button>
+      <button class="disease-pill" data-disease="metabolic_syndrome">Metabolic Syndrome</button>
+      <button class="disease-pill" data-disease="nafld">Fatty Liver (NAFLD)</button>
+      <button class="disease-pill" data-disease="ckd">Chronic Kidney Disease</button>
+      <button class="disease-pill" data-disease="hypertension">Hypertension</button>
+    </div>
+    <div class="chart-box"><div class="shap-canvas-wrap"><canvas id="shapChart"></canvas></div></div>
+    <div class="info-box" id="driversExplanation"></div>
+  </section>
+
+  <!-- ============ TAB: AI EXPLANATION ============ -->
+  <section class="tab-panel hidden" id="tab-aiexplain">
+    <h2>AI-generated explanation</h2>
+    <p class="page-subtitle">A natural-language summary of your risk drivers, written by an LLM from the same SHAP data shown on the Risk &amp; Drivers tab.</p>
+    <div class="disease-selector" id="diseaseSelectorAi">
+      <button class="disease-pill active" data-disease="diabetes">Type 2 Diabetes</button>
+      <button class="disease-pill" data-disease="metabolic_syndrome">Metabolic Syndrome</button>
+      <button class="disease-pill" data-disease="nafld">Fatty Liver (NAFLD)</button>
+      <button class="disease-pill" data-disease="ckd">Chronic Kidney Disease</button>
+      <button class="disease-pill" data-disease="hypertension">Hypertension</button>
+    </div>
+    <div class="genai-box" id="genaiBox">
+      <span class="genai-tag">AI EXPLANATION — <span id="genaiDiseaseLabel">TYPE 2 DIABETES</span></span>
+      <div id="genaiText">Loading AI explanation…</div>
+    </div>
+  </section>
+
+  <!-- ============ TAB: SIMULATOR ============ -->
+  <section class="tab-panel hidden" id="tab-simulator">
+    <h2>Simulate lifestyle interventions</h2>
+    <div class="sim-grid">
+      <div>
+        <label>Weight loss (kg) <span id="i_weight_loss_kgVal">8</span></label>
+        <input type="range" id="i_weight_loss_kg" min="0" max="30" step="1" value="8">
+        <label>Added exercise (min/week) <span id="i_exercise_min_per_weekVal">150</span></label>
+        <input type="range" id="i_exercise_min_per_week" min="0" max="400" step="25" value="150">
+        <label>Cut sedentary time (min/day) <span id="i_sedentary_reduction_minVal">0</span></label>
+        <input type="range" id="i_sedentary_reduction_min" min="0" max="300" step="15" value="0">
+      </div>
+      <div>
+        <label>Target sleep (hrs/night) <span id="i_sleep_hoursVal">7.5</span></label>
+        <input type="range" id="i_sleep_hours" min="3" max="10" step="0.5" value="7.5">
+        <label>Reduce added sugar (%) <span id="i_sugar_reduction_pctVal">30</span></label>
+        <input type="range" id="i_sugar_reduction_pct" min="0" max="100" step="5" value="30">
+        <label>Add fiber (g/day) <span id="i_fiber_increase_gVal">0</span></label>
+        <input type="range" id="i_fiber_increase_g" min="0" max="30" step="1" value="0">
+      </div>
+      <div>
+        <label>Cut alcohol (drinks/day) <span id="i_alcohol_reduction_drinksVal">0</span></label>
+        <input type="range" id="i_alcohol_reduction_drinks" min="0" max="5" step="0.5" value="0">
+        <label>Reduce stress/mood score (points) <span id="i_stress_reduction_pointsVal">0</span></label>
+        <input type="range" id="i_stress_reduction_points" min="0" max="15" step="1" value="0">
+        <label class="checkbox-row" style="display:flex;align-items:center;gap:6px;margin-top:14px;">
+          <input type="checkbox" id="i_quit_smoking"> Quit smoking
+        </label>
+      </div>
+    </div>
+
+    <h3>Projected outcome</h3>
+    <div class="outcome-grid">
+      <div class="tile"><div class="tile-label">Diabetes risk</div><div class="tile-value" id="outRisk">--</div><span class="metric-delta" id="outRiskDelta"></span></div>
+      <div class="tile"><div class="tile-label">BMI</div><div class="tile-value" id="outBmi">--</div><span class="metric-delta" id="outBmiDelta"></span></div>
+      <div class="tile"><div class="tile-label">HDL</div><div class="tile-value" id="outHdl">--</div><span class="metric-delta" id="outHdlDelta"></span></div>
+      <div class="tile"><div class="tile-label">Triglycerides</div><div class="tile-value" id="outTrig">--</div><span class="metric-delta" id="outTrigDelta"></span></div>
+      <div class="tile"><div class="tile-label">Fasting glucose</div><div class="tile-value" id="outGlucose">--</div><span class="metric-delta" id="outGlucoseDelta"></span></div>
+      <div class="tile"><div class="tile-label">HbA1c</div><div class="tile-value" id="outHba1c">--</div><span class="metric-delta" id="outHba1cDelta"></span></div>
+    </div>
+
+    <h3>Projected risk across all conditions</h3>
+    <div class="outcome-grid outcome-grid-4" id="allDiseaseOutcomeGrid">
+      <div class="tile"><div class="tile-label">Metabolic Syndrome</div><div class="tile-value" id="outMetSyn">--</div><span class="metric-delta" id="outMetSynDelta"></span></div>
+      <div class="tile"><div class="tile-label">Fatty Liver (NAFLD)</div><div class="tile-value" id="outNafld">--</div><span class="metric-delta" id="outNafldDelta"></span></div>
+      <div class="tile"><div class="tile-label">Chronic Kidney Disease</div><div class="tile-value" id="outCkd">--</div><span class="metric-delta" id="outCkdDelta"></span></div>
+      <div class="tile"><div class="tile-label">Hypertension</div><div class="tile-value" id="outHtn">--</div><span class="metric-delta" id="outHtnDelta"></span></div>
+    </div>
+
+    <h3>Why</h3>
+    <ul id="narrativeList" class="narrative-list"></ul>
+
+    <h3>Which single intervention helps most?</h3>
+    <div class="chart-box"><canvas id="rankChart" height="300"></canvas></div>
+
+    <p class="hint">
+      Simulation coefficients are approximate, evidence-informed estimates (weight-loss/BP/lipid/
+      glycemic meta-analyses, structured-exercise and interrupted-sitting trials, sleep-restriction
+      and stress-reduction studies). This is a decision-support prototype, not a validated clinical
+      dosing tool. Fasting glucose and HbA1c are tracked and forecast here as outcomes, exactly
+      like lipids, CRP, and liver fat — none of them are ever used as inputs to the risk model
+      itself, since they're diagnostic criteria for diabetes, not independent risk factors.
+    </p>
+  </section>
+
+  <!-- ============ TAB: TRAJECTORY ============ -->
+  <section class="tab-panel hidden" id="tab-trajectory">
+    <h2>Projected 12-month trajectory</h2>
+    <div class="disease-selector" id="diseaseSelectorTrajectory">
+      <button class="disease-pill disease-pill-traj active" data-disease="diabetes">Type 2 Diabetes</button>
+      <button class="disease-pill disease-pill-traj" data-disease="metabolic_syndrome">Metabolic Syndrome</button>
+      <button class="disease-pill disease-pill-traj" data-disease="nafld">Fatty Liver (NAFLD)</button>
+      <button class="disease-pill disease-pill-traj" data-disease="ckd">Chronic Kidney Disease</button>
+      <button class="disease-pill disease-pill-traj" data-disease="hypertension">Hypertension</button>
+    </div>
+    <div class="chart-box trajectory-chart-box"><div class="trajectory-canvas-wrap"><canvas id="trajectoryChart"></canvas></div></div>
+    <p class="hint">Trajectories interpolate smoothly toward each scenario's projected risk over 12 months and are illustrative, not a validated longitudinal forecast. Uses the same simulated intervention set as the Simulator tab.</p>
+  </section>
+
+  <!-- ============ TAB: KNOW YOURSELF ============ -->
+  <section class="tab-panel hidden" id="tab-knowyourself">
+    <h2>Know Yourself</h2>
+    <p class="page-subtitle">General education about the numbers Metis tracks and what tends to help — not personalized medical advice.</p>
+
+    <div class="intended-use-card">
+      <h3>Intended Use</h3>
+      <p>
+        Metis is a <strong>clinical decision-support tool</strong>, intended to help
+        identify people who may benefit from further clinical evaluation for five
+        metabolic conditions (Type 2 Diabetes, Metabolic Syndrome, Fatty Liver
+        Disease, Chronic Kidney Disease, Hypertension), using routinely available
+        anthropometric, laboratory, and lifestyle data.
+      </p>
+      <p>
+        <strong>Metis is not a diagnostic device.</strong> A Metis risk estimate
+        does not confirm or rule out any condition, and is not intended to be the
+        sole basis for any clinical decision. Every risk estimate should be
+        interpreted by a qualified healthcare professional alongside clinical
+        judgment, patient history, physical examination, and confirmatory
+        diagnostic testing (e.g. fasting glucose or HbA1c for diabetes, a renal
+        panel for kidney disease, liver imaging for fatty liver disease, as
+        clinically appropriate).
+      </p>
+      <p>
+        Metis has been validated <strong>internally</strong>, on retrospective
+        population survey data (NHANES, August 2021–August 2023) held out from
+        model training — see the validation reports in
+        <code>backend/training/</code> for full methodology and results. It has
+        <strong>not yet undergone prospective clinical validation</strong> against
+        real patient outcomes. This distinction matters: internal validation
+        confirms the model generalizes to unseen rows from the same survey: it
+        does not yet confirm that a person flagged as high-risk today will go on
+        to develop that condition. Treat Metis accordingly — as a well-validated
+        statistical screening aid, not a clinically proven one yet.
+      </p>
+    </div>
+
+    <div class="ky-grid">
+
+      <div class="ky-card">
+        <h3>Understanding your numbers</h3>
+        <dl class="ky-glossary">
+          <dt>BMI (Body Mass Index)</dt>
+          <dd>Weight relative to height. A screening tool, not a diagnosis — it doesn't distinguish muscle from fat, so it's most useful alongside waist circumference.</dd>
+          <dt>Waist-to-height ratio</dt>
+          <dd>Waist circumference divided by height. Tracks visceral (abdominal) fat, which matters more for metabolic risk than weight alone. Under 0.5 is generally considered healthier.</dd>
+          <dt>HDL / LDL / Triglycerides</dt>
+          <dd>HDL ("good" cholesterol) helps clear fat from the bloodstream — higher is better. LDL and triglycerides circulate fat and, when elevated, are linked to cardiovascular and metabolic risk.</dd>
+          <dt>CRP (C-reactive protein)</dt>
+          <dd>A marker of systemic inflammation. Chronic low-grade inflammation is increasingly linked to insulin resistance, so a persistently elevated CRP is worth discussing with a doctor.</dd>
+          <dt>HOMA-IR / Fasting insulin</dt>
+          <dd>Estimates insulin resistance — how hard your body has to work to keep blood sugar in range. Higher values mean your cells respond less readily to insulin.</dd>
+          <dt>Fasting glucose &amp; HbA1c</dt>
+          <dd>The two standard diagnostic labs for diabetes. Fasting glucose is a snapshot; HbA1c reflects average blood sugar over roughly the past 2-3 months. Metis tracks both and forecasts how interventions might shift them, but never uses either as a risk-model input — that would mean using the diagnosis to predict itself.</dd>
+          <dt>Liver fat (CAP score)</dt>
+          <dd>From liver elastography. Fatty liver (steatosis) is both a cause and consequence of insulin resistance, and often improves substantially with weight loss.</dd>
+          <dt>PHQ-9 (stress/mood score)</dt>
+          <dd>A standard, validated screening scale (0–27) for stress and low-mood symptoms — not a diagnosis. Chronic stress is associated with elevated cortisol, which can worsen insulin resistance.</dd>
+        </dl>
+      </div>
+
+      <div class="ky-card">
+        <h3>Reading your risk score</h3>
+        <p>The percentage on your Home tab is a model estimate, calibrated on real 2021–2023 NHANES survey data — it's the model's best guess given your inputs, not a diagnosis. A few things worth keeping in mind:</p>
+        <ul>
+          <li>Small changes in borderline inputs (e.g. BMI right at a threshold) can shift the percentage more than they'd shift your actual health.</li>
+          <li>The <strong>Risk &amp; Drivers</strong> tab shows exactly which factors pushed your score up (rose) or down (teal) — that's usually more actionable than the headline number itself.</li>
+          <li>The model can't see everything about you — family history, genetics, and medications aren't part of its inputs.</li>
+          <li>Only a clinician, usually with a fasting glucose or HbA1c test, can actually diagnose prediabetes or diabetes.</li>
+        </ul>
+      </div>
+
+      <div class="ky-card ky-ranges-card">
+        <h3>Normal reference ranges</h3>
+        <p class="section-hint" style="margin-bottom:14px;">General population reference ranges — actual lab cutoffs vary by lab, age, sex, and pregnancy status. Not a substitute for your lab report's own reference column.</p>
+        <table class="ky-ranges-table">
+          <thead><tr><th>Test</th><th>Generally normal</th></tr></thead>
+          <tbody>
+            <tr><td>Blood pressure</td><td>Below 120 / 80 mmHg</td></tr>
+            <tr><td>HDL cholesterol</td><td>Above 40 mg/dL (men), above 50 mg/dL (women)</td></tr>
+            <tr><td>LDL cholesterol</td><td>Below 100 mg/dL (optimal)</td></tr>
+            <tr><td>Total cholesterol</td><td>Below 200 mg/dL</td></tr>
+            <tr><td>Triglycerides</td><td>Below 150 mg/dL</td></tr>
+            <tr><td>CRP (inflammation)</td><td>Below 1.0 mg/L (low); 1–3 average; above 3 elevated</td></tr>
+            <tr><td>Fasting insulin</td><td>Roughly 2.6–24.9 µIU/mL (lab-dependent)</td></tr>
+            <tr><td>Fasting glucose</td><td>Below 100 mg/dL (100–125 = prediabetes, 126+ = diabetic range)</td></tr>
+            <tr><td>HbA1c</td><td>Below 5.7% (5.7–6.4% = prediabetes, 6.5%+ = diabetic range)</td></tr>
+            <tr><td>Liver fat (CAP score)</td><td>Below ~248 dB/m (no significant steatosis)</td></tr>
+            <tr><td>Liver stiffness</td><td>Below ~7 kPa (no significant fibrosis)</td></tr>
+            <tr><td>ALT / AST (liver enzymes)</td><td>Roughly 7–56 U/L (ALT), 8–48 U/L (AST) — lab-dependent</td></tr>
+            <tr><td>GGT</td><td>Roughly 8–61 U/L (men), 5–36 U/L (women) — lab-dependent</td></tr>
+            <tr><td>Uric acid</td><td>Roughly 3.4–7.0 mg/dL (men), 2.4–6.0 mg/dL (women)</td></tr>
+            <tr><td>Albumin</td><td>Roughly 3.5–5.0 g/dL</td></tr>
+            <tr><td>White blood cell count</td><td>Roughly 4.5–11.0 (thousand cells/µL)</td></tr>
+            <tr><td>Creatinine</td><td>Roughly 0.7–1.3 mg/dL (men), 0.6–1.1 mg/dL (women)</td></tr>
+            <tr><td>BUN</td><td>Roughly 7–20 mg/dL</td></tr>
+            <tr><td>eGFR (kidney function)</td><td>Above 90 normal; 60–89 mildly reduced; below 60 = possible CKD</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="ky-card ky-ranges-card">
+        <h3>Understanding your 5 risk scores</h3>
+        <p class="section-hint" style="margin-bottom:14px;">Metis now screens for five related metabolic conditions, each with its own model and its own excluded predictors (a condition's own diagnostic markers are never used to predict itself).</p>
+        <dl class="ky-glossary">
+          <dt>Type 2 Diabetes</dt>
+          <dd>Predicted from independent risk factors; fasting glucose and HbA1c are tracked separately as outcomes, never as inputs, since they define the diagnosis itself.</dd>
+          <dt>Metabolic Syndrome</dt>
+          <dd>A cluster of 3+ of: abdominal obesity, high triglycerides, low HDL, elevated blood pressure, elevated fasting glucose. A strong predictor of future diabetes and heart disease even before any single measurement crosses a diagnostic line on its own.</dd>
+          <dt>Fatty Liver Disease (NAFLD)</dt>
+          <dd>Fat buildup in the liver, measured here by elastography (CAP score) — not a blood test. Closely tied to insulin resistance in both directions: it's often an early sign of developing metabolic problems, and losing weight is one of the most effective ways to reverse it.</dd>
+          <dt>Chronic Kidney Disease (CKD)</dt>
+          <dd>Reduced kidney filtering capacity (eGFR, calculated from a creatinine blood test), or a prior diagnosis. Diabetes, hypertension, and metabolic syndrome are all major risk factors for CKD over time, which is part of why they're tracked together here.</dd>
+          <dt>Hypertension</dt>
+          <dd>High blood pressure, by direct measurement or prior diagnosis. Often has no symptoms at all, which is why it's sometimes called a "silent" risk factor — regular measurement matters more than how you feel.</dd>
+        </dl>
+      </div>
+
+      <div class="ky-card">
+        <h3>Everyday tips</h3>
+        <div class="ky-tip-grid">
+          <div class="ky-tip"><strong>Nutrition</strong><p>Favor whole foods with fiber (vegetables, legumes, whole grains) over refined carbs and added sugar. Fiber slows glucose absorption and tends to improve lipids over time.</p></div>
+          <div class="ky-tip"><strong>Movement</strong><p>Both structured exercise and simply breaking up long sitting stretches help — a short walk after meals is a well-supported, low-effort habit.</p></div>
+          <div class="ky-tip"><strong>Sleep</strong><p>Short sleep is consistently linked to reduced insulin sensitivity. Consistent sleep/wake timing tends to matter as much as total hours.</p></div>
+          <div class="ky-tip"><strong>Stress</strong><p>Chronic stress raises cortisol, which can raise blood sugar independent of diet. Whatever reliably lowers your stress — walking, breathing exercises, social connection — has metabolic value too.</p></div>
+          <div class="ky-tip"><strong>Alcohol &amp; smoking</strong><p>Both are independently linked to insulin resistance and liver fat. Reducing either has measurable benefits, seen in this app's own simulator.</p></div>
+        </div>
+      </div>
+
+      <div class="ky-card">
+        <h3>When to see a doctor</h3>
+        <p>Consider booking a checkup if:</p>
+        <ul>
+          <li>Your predicted risk is elevated and you haven't had fasting glucose or HbA1c checked recently.</li>
+          <li>You notice new symptoms — unusual thirst, frequent urination, unexplained fatigue or weight change.</li>
+          <li>You have a family history of type 2 diabetes and haven't discussed screening with a clinician.</li>
+          <li>Any number here (blood pressure, CRP, liver markers) is far outside typical ranges — this tool flags patterns, a clinician interprets them.</li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============ TAB: HISTORY ============ -->
+  <section class="tab-panel hidden" id="tab-history">
+    <h2>Your submission history</h2>
+    <p class="page-subtitle">Every metabolic snapshot you've saved for this account. Restore an earlier one to view it on the Home tab again.</p>
+    <div class="history-list-dash" id="historyListDash">
+      <p class="hint">Loading history…</p>
+    </div>
+  </section>
+
+  <!-- ============ TAB: CONTACT US ============ -->
+  <section class="tab-panel hidden" id="tab-contact">
+    <h2>Contact Us</h2>
+    <p class="page-subtitle">Questions, feedback, or collaboration inquiries — reach the team behind Metis.</p>
+
+    <div class="contact-grid">
+      <div class="contact-cards">
+        <div class="contact-card">
+          <div class="contact-avatar">KB</div>
+          <div>
+            <div class="contact-name">Khayati Bhrdwaj</div>
+            <div class="contact-role">Project Lead</div>
+            <a class="contact-link" href="mailto:khayati.bhrdwaj@s.amity.edu">khayati.bhrdwaj@s.amity.edu</a>
+          </div>
+        </div>
+        <div class="contact-card">
+          <div class="contact-avatar">RC</div>
+          <div>
+            <div class="contact-name">Prof. Ritu Chauhan</div>
+            <div class="contact-role">Faculty Supervisor</div>
+            <a class="contact-link" href="mailto:rchauhan@amity.edu">rchauhan@amity.edu</a>
+          </div>
+        </div>
+        <div class="contact-card">
+          <div class="contact-avatar">AI</div>
+          <div>
+            <div class="contact-name">AI and IoT Automation Lab</div>
+            <div class="contact-role">Research Group</div>
+            <a class="contact-link" href="https://www.linkedin.com/in/khayati-bhrdwaj/edit/forms/position/2913524569/" target="_blank">LinkedIn</a>
+          </div>
+        </div>
+        <div class="contact-card">
+          <div class="contact-avatar">AU</div>
+          <div>
+            <div class="contact-name">Amity Institute of Biotechnology</div>
+            <div class="contact-role">Amity University</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="chat-panel">
+        <div class="chat-header">Send us a message</div>
+        <div class="chat-messages" id="chatMessages">
+          <div class="chat-bubble chat-bubble-system">Hi! Send a message and it'll go straight to the team's inbox.</div>
+        </div>
+        <div class="chat-input-row">
+          <input type="text" id="chatName" placeholder="Your name (optional)">
+          <input type="email" id="chatEmail" placeholder="Your email (optional, for a reply)">
+        </div>
+        <div class="chat-input-row">
+          <textarea id="chatMessage" placeholder="Type your message…" rows="3"></textarea>
+        </div>
+        <button class="btn btn-primary" id="chatSendBtn" style="align-self:flex-end;">Send</button>
+      </div>
+    </div>
+  </section>
+
+  </div>
+</div>
+
+<!-- Print-only summary: hidden on screen (see .print-summary CSS), shown
+     only when printing/saving as PDF via printSummaryBtn. Populated by
+     app.js's buildPrintSummary() right before window.print() is called. -->
+<div class="print-summary" id="printSummary">
+  <h1>Metis — Metabolic Health Summary</h1>
+  <p class="print-date" id="printDate"></p>
+
+  <div class="print-intended-use">
+    <strong>Clinical decision-support tool — not a diagnostic device.</strong>
+    This is a risk estimate from a statistical model trained on NHANES
+    survey data, internally validated only (not yet prospectively
+    validated against real patient outcomes). It does not confirm or
+    rule out any condition. Please interpret alongside clinical judgment
+    and confirmatory diagnostic testing.
+  </div>
+
+  <table class="print-risk-table" id="printRiskTable">
+    <thead><tr><th>Condition</th><th>Predicted risk</th><th>Top contributing factors</th></tr></thead>
+    <tbody><!-- populated by JS --></tbody>
+  </table>
+
+  <p class="print-footer">Generated by Metis. Full methodology, validation reports, and model cards available in the project repository.</p>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
